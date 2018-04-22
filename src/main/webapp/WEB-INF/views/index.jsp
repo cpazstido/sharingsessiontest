@@ -8,7 +8,7 @@
 <head>
 </head>
 <body>
-<a href="/add">添加session</a>
+<a href="${rootPath}/add">添加session</a>
 <h1>sessionID:<%=session.getId() %></h1>
 <h1>name:${user}</h1>
 </body>

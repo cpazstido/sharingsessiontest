@@ -1,6 +1,10 @@
 package com.cf.sessiontest.vo;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
+    private static final long serialVersionUID = 1L; //一会就说这个是做什么的
+
     private String name;
     private int age;
 
