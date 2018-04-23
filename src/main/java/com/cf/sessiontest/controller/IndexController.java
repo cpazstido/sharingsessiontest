@@ -15,9 +15,11 @@ public class IndexController {
     @RequestMapping("index")
     public String index(HttpSession session, HttpServletRequest request, HttpServletResponse response){
         Cookie cookies[]=request.getCookies();
-        for(Cookie cookie:cookies){
-            if(cookie.getName().equalsIgnoreCase("JSESSIONID")){
-                System.out.println("cookieid:"+cookie.getValue());
+        if(cookies!=null){
+            for(Cookie cookie:cookies){
+                if(cookie.getName().equalsIgnoreCase("JSESSIONID")){
+                    System.out.println("cookieid:"+cookie.getValue());
+                }
             }
         }
         System.out.println("sessionid:"+session.getId());
@@ -47,7 +49,5 @@ public class IndexController {
                 System.out.println("user不为空");
             }
         }
-
-
     }
 }
