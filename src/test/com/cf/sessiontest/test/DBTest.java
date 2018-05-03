@@ -1,5 +1,7 @@
 package com.cf.sessiontest.test;
 
+import com.cf.sessiontest.model.User;
+import com.cf.sessiontest.service.IUserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,6 +12,9 @@ import java.sql.SQLException;
 public class DBTest extends BaseJunit4Test {
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private IUserService userService;
 
     @Test
     public void isDBOk(){
@@ -27,5 +32,19 @@ public class DBTest extends BaseJunit4Test {
             e.printStackTrace();
         }
         System.out.println(flag);
+    }
+
+    @Test
+    public void addUser() throws Exception {
+        User user = new User();
+        user.setName("cf");
+        user.setAge(29);
+        userService.save(user);
+        System.out.println("");
+    }
+
+    @Test
+    public void testTransaction() throws Exception {
+
     }
 }
