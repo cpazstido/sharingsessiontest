@@ -1,5 +1,8 @@
 package com.cf.sessiontest.controller;
 
+import com.cf.sessiontest.model.User;
+import com.cf.sessiontest.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,10 +13,18 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class IndexController {
+    @Autowired
+    private IUserService userService;
 
     @RequestMapping("index")
-    public String index(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+    public String index(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
         Cookie cookies[]=request.getCookies();
+//        int i=1/0;
+        User user = new User();
+        user.setName("陈");
+        user.setAge(29);
+        userService.testTransaction();
+//        userService.save(user);
         if(cookies!=null){
             for(Cookie cookie:cookies){
                 if(cookie.getName().equalsIgnoreCase("JSESSIONID")){

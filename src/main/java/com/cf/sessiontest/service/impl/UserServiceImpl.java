@@ -12,5 +12,8 @@ import com.cf.sessiontest.service.IUserService;
  */
 @Service
 public class UserServiceImpl extends BaseService<User> implements IUserService{
+    public void testTransaction(){
+        int i= 1/0;
+    };
 }
 

@@ -32,6 +32,7 @@ public abstract class BaseService<T> implements IService< T> {
     };
     @Override
     public int save(T entity) {
+        int i = 1/0;
         return mapper.insert(entity);
     }
     @Override

@@ -7,5 +7,6 @@ import com.cf.sessiontest.model.User;
  *
  */
 public interface IUserService extends IService<User>{
+    public void testTransaction();
 
 }

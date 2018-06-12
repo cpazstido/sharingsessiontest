@@ -4,8 +4,10 @@ import com.cf.sessiontest.model.User;
 import com.cf.sessiontest.multidatasource.DataSourceTypeManager;
 import com.cf.sessiontest.multidatasource.DataSources;
 import com.cf.sessiontest.service.IUserService;
+import com.cf.sessiontest.utils.ApplicationContextUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.Connection;
@@ -38,6 +40,7 @@ public class DBTest extends BaseJunit4Test {
 
     @Test
     public void addUser() throws Exception {
+        ApplicationContext applicationContext = ApplicationContextUtil.getApplicationContext();
         User user = new User();
         user.setName("陈");
         user.setAge(29);
