@@ -41,6 +41,7 @@ public class DBTest extends BaseJunit4Test {
     @Test
     public void addUser() throws Exception {
         ApplicationContext applicationContext = ApplicationContextUtil.getApplicationContext();
+        IUserService userService = (IUserService)applicationContext.getBean("userServiceImpl");
         User user = new User();
         user.setName("陈");
         user.setAge(29);
