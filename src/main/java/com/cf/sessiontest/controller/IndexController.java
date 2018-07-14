@@ -1,6 +1,5 @@
 package com.cf.sessiontest.controller;
 
-import com.cf.sessiontest.vo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,17 +39,6 @@ public class IndexController {
             cookie.setPath("/");
             System.out.println("已添加===============");
             response.addCookie(cookie);
-
-            User user = (User)session.getAttribute("user");
-            if(user==null){
-                User u = new User();
-                u.setName("cf");
-                u.setAge(29);
-                session.setAttribute("user",u);
-                System.out.println("user为空");
-            }else{
-                System.out.println("user不为空");
-            }
         }
     }
 }
