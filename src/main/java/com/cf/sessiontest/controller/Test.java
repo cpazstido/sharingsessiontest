@@ -9,8 +9,8 @@ import java.sql.SQLException;
 
 @Controller
 public class Test {
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+//    @Autowired
+//    private JdbcTemplate jdbcTemplate;
 
     public static void main(String[] args) {
 //        Test test = new Test();
@@ -21,13 +21,13 @@ public class Test {
     }
 
     public boolean isDBOk(){
-        boolean flag = false;
-        try {
-            Connection con = jdbcTemplate.getDataSource().getConnection();
-            flag = true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        boolean flag = false;
+//        try {
+//            Connection con = jdbcTemplate.getDataSource().getConnection();
+//            flag = true;
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         return false;
     }
 
