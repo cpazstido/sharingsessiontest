@@ -8,6 +8,7 @@
 <head>
 </head>
 <body>
+<h1>tomcat 8080</h1>
 <a href="${rootPath}/add">添加session</a>
 <h1>sessionID:<%=session.getId() %></h1>
 <h1>name:${user}</h1>

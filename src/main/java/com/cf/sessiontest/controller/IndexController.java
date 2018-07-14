@@ -3,6 +3,7 @@ package com.cf.sessiontest.controller;
 import com.cf.sessiontest.vo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
 
     @RequestMapping("index")
+    @ResponseBody
     public String index(HttpSession session, HttpServletRequest request, HttpServletResponse response){
         Cookie cookies[]=request.getCookies();
         if(cookies!=null){
@@ -23,7 +25,8 @@ public class IndexController {
             }
         }
         System.out.println("sessionid:"+session.getId());
-        return "index";
+//        return "index";
+        return request.getRemoteAddr()+":"+request.getLocalPort();
     }
 
     @RequestMapping("add")
