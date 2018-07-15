@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
 
     @RequestMapping("index")
-    @ResponseBody
+//    @ResponseBody
     public String index(HttpSession session, HttpServletRequest request, HttpServletResponse response){
         Cookie cookies[]=request.getCookies();
         if(cookies!=null){
@@ -24,8 +24,8 @@ public class IndexController {
             }
         }
         System.out.println("sessionid:"+session.getId());
-//        return "index";
-        return request.getRemoteAddr()+":"+request.getLocalPort();
+        return "index";
+//        return request.getRemoteAddr()+":"+request.getLocalPort();
     }
 
     @RequestMapping("add")
