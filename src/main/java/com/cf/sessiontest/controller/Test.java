@@ -13,8 +13,11 @@ public class Test {
 //    private JdbcTemplate jdbcTemplate;
 
     public static void main(String[] args) {
-        Test test = new Test();
-        System.out.println(test.isDBOk());
+//        Test test = new Test();
+//        System.out.println(test.isDBOk());
+        Integer a = 5;
+        Integer b = new Integer(5);
+        System.out.println(a==b);
     }
 
     public boolean isDBOk(){
