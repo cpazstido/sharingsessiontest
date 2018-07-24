@@ -23,16 +23,17 @@ public class IndexController {
         User user = new User();
         user.setName("陈");
         user.setAge(29);
-        userService.testTransaction();
+        String re = userService.testTransaction();
+        System.out.println("调用结果："+re);
 //        userService.save(user);
         if(cookies!=null){
             for(Cookie cookie:cookies){
                 if(cookie.getName().equalsIgnoreCase("JSESSIONID")){
-                    System.out.println("cookieid:"+cookie.getValue());
+//                    System.out.println("cookieid:"+cookie.getValue());
                 }
             }
         }
-        System.out.println("sessionid:"+session.getId());
+//        System.out.println("sessionid:"+session.getId());
         return "index";
     }
 

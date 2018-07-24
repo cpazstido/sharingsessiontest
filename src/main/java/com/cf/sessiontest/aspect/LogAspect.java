@@ -19,7 +19,7 @@ import java.util.ArrayList;
  *
  */
 @Aspect
-//@Component
+@Component
 public class LogAspect {
 //    @Resource
 //    private LogService logService;  
@@ -29,7 +29,7 @@ public class LogAspect {
     //Controller层切点，这里如果需要配置多个切入点用“||”
     //com.cf.sessiontest.service.impl
     //com.cf.sessiontest.service
-    @Pointcut("execution(* com.cf.sessiontest..*.*(..))")
+    @Pointcut("execution(* com.cf.sessiontest.service.IUserService.testTransaction())")
     public void controllerAspect() {  
     }
 
@@ -39,7 +39,7 @@ public class LogAspect {
      * @param joinPoint
      * @param e
      */
-    @AfterThrowing(pointcut = "controllerAspect()", throwing="e")
+//    @AfterThrowing(pointcut = "controllerAspect()", throwing="e")
     public void doAfterThrowing(JoinPoint joinPoint, Throwable e) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         //请求的IP
@@ -57,6 +57,7 @@ public class LogAspect {
     @Before("controllerAspect()")
     public void doBefore(JoinPoint joinPoint) {
     	start = System.currentTimeMillis();
+        System.out.println(start);
     }
     /**
      * 
