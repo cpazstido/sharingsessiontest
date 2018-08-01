@@ -158,23 +158,24 @@
     </bean>
 
     <!--&lt;!&ndash;&lt;!&ndash; 声明使用注解式事务 &ndash;&gt;&ndash;&gt;-->
-    <!--<tx:annotation-driven proxy-target-class="false" transaction-manager="transactionManager"/>-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
     <!--&lt;!&ndash; 通知 &ndash;&gt;-->
-    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
-        <!--<tx:attributes>-->
-            <!--&lt;!&ndash; 传播行为 &ndash;&gt;-->
-            <!--<tx:method rollback-for="java.lang.Exception" name="save*" propagation="REQUIRED"/>-->
-            <!--<tx:method rollback-for="java.lang.Exception" name="register*" propagation="REQUIRED"/>-->
-            <!--<tx:method rollback-for="java.lang.Exception" name="delete*" propagation="REQUIRED"/>-->
-            <!--<tx:method rollback-for="java.lang.Exception" name="create*" propagation="REQUIRED"/>-->
-            <!--<tx:method rollback-for="java.lang.Exception" name="update*" propagation="REQUIRED"/>-->
-            <!--<tx:method rollback-for="java.lang.Exception" name="call*" propagation="REQUIRED"/>-->
-            <!--<tx:method rollback-for="java.lang.Exception" name="initializer*" propagation="REQUIRED"/>-->
-            <!--<tx:method rollback-for="java.lang.Exception" name="find*" propagation="SUPPORTS" read-only="true"/>-->
-            <!--<tx:method rollback-for="java.lang.Exception" name="get*" propagation="SUPPORTS" read-only="true"/>-->
-            <!--<tx:method rollback-for="java.lang.Exception" name="select*" propagation="SUPPORTS" read-only="true"/>-->
-        <!--</tx:attributes>-->
-    <!--</tx:advice>-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!-- 传播行为 -->
+            <tx:method rollback-for="java.lang.Exception" name="save*" propagation="REQUIRED"/>
+            <tx:method rollback-for="java.lang.Exception" name="register*" propagation="REQUIRED"/>
+            <tx:method rollback-for="java.lang.Exception" name="delete*" propagation="REQUIRED"/>
+            <tx:method rollback-for="java.lang.Exception" name="create*" propagation="REQUIRED"/>
+            <tx:method rollback-for="java.lang.Exception" name="update*" propagation="REQUIRED"/>
+            <tx:method rollback-for="java.lang.Exception" name="call*" propagation="REQUIRED"/>
+            <tx:method rollback-for="java.lang.Exception" name="initializer*" propagation="REQUIRED"/>
+            <tx:method rollback-for="java.lang.Exception" name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method rollback-for="java.lang.Exception" name="get*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method rollback-for="java.lang.Exception" name="select*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method rollback-for="java.lang.Exception" name="test*" propagation="REQUIRED" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
     <!--&lt;!&ndash; aop &ndash;&gt;-->
     <!--<aop:config>-->
         <!--<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.cf.sessiontest.*.service.imp.*.*(..))"/>-->
@@ -182,19 +183,23 @@
 
 
     <!--<aop:aspectj-autoproxy proxy-target-class="false"/>-->
-    <aop:config>
-        <aop:aspect id="testAspectjjjj" ref="testAspectJ">
-            <aop:pointcut id="userServicePointCut" expression="bean(userServiceImpl)" />
-            <aop:before method="doBefore" pointcut-ref="userServicePointCut" />
-            <aop:after method="doAfter" pointcut-ref="userServicePointCut" />
-            <aop:around method="doAround" pointcut-ref="userServicePointCut" />
-            <aop:after-returning method="doAfterReturnning" returning="rtv" pointcut-ref="userServicePointCut" />
-            <aop:after-throwing method="doAfterThrowing" throwing="ex" pointcut-ref="userServicePointCut" />
-        </aop:aspect>
-        <!--<aop:aspect id="logAspectssssssss1" ref="logAspect">-->
+    <!--<aop:config>-->
+        <!--<aop:aspect id="testAspectjjjj" ref="testAspectJ">-->
             <!--<aop:pointcut id="userServicePointCut" expression="bean(userServiceImpl)" />-->
             <!--<aop:before method="doBefore" pointcut-ref="userServicePointCut" />-->
+            <!--<aop:after method="doAfter" pointcut-ref="userServicePointCut" />-->
+            <!--<aop:around method="doAround" pointcut-ref="userServicePointCut" />-->
+            <!--<aop:after-returning method="doAfterReturnning" returning="rtv" pointcut-ref="userServicePointCut" />-->
+            <!--<aop:after-throwing method="doAfterThrowing" throwing="ex" pointcut-ref="userServicePointCut" />-->
         <!--</aop:aspect>-->
-    </aop:config>
+        <!--&lt;!&ndash;<aop:aspect id="logAspectssssssss1" ref="logAspect">&ndash;&gt;-->
+            <!--&lt;!&ndash;<aop:pointcut id="userServicePointCut" expression="bean(userServiceImpl)" />&ndash;&gt;-->
+            <!--&lt;!&ndash;<aop:before method="doBefore" pointcut-ref="userServicePointCut" />&ndash;&gt;-->
+        <!--&lt;!&ndash;</aop:aspect>&ndash;&gt;-->
+    <!--</aop:config>-->
+
+    <!--<aop:config>-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.cf.*.service.impl.*.*(..))"/>-->
+    <!--</aop:config>-->
 
 </beans>

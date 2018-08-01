@@ -1,9 +1,11 @@
 package com.cf.sessiontest.controller;
 
+import com.cf.sessiontest.utils.PropertyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -15,9 +17,16 @@ public class Test {
     public static void main(String[] args) {
 //        Test test = new Test();
 //        System.out.println(test.isDBOk());
-        Integer a = 5;
-        Integer b = new Integer(5);
-        System.out.println(a==b);
+
+        BigDecimal a = new BigDecimal(0.1);
+        BigDecimal b = new BigDecimal(0.2);
+        System.out.println(a.compareTo(b));
+
+        PropertyUtils.getProperties("");
+        PropertyUtils.getProperties("");
+        PropertyUtils.getProperties("");
+        PropertyUtils.getProperties("");
+        new PropertyUtils();
     }
 
     public boolean isDBOk(){
