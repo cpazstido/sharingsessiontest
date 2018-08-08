@@ -36,7 +36,7 @@ public class UserServiceImpl extends BaseService<User> implements IUserService{
     };
 
     @Override
-    @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRES_NEW)
+    @Transactional(rollbackFor = Exception.class,propagation = Propagation.NOT_SUPPORTED)
     public User testTransaction1() {
         User user = userMapper.selectByPrimaryKey("6be8c36aaaf44926a1727a621e15d1c8");
         return user;
