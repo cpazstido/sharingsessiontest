@@ -24,6 +24,7 @@ public class IndexController {
     }
 
     @RequestMapping("index")
+    @ResponseBody
     public String index(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
         Cookie cookies[]=request.getCookies();
 //        int i=1/0;

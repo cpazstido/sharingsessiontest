@@ -8,6 +8,6 @@ import com.cf.sessiontest.model.User;
  */
 public interface IUserService extends IService<User>{
     public String testTransaction();
-    public void testTransaction1();
+    public User testTransaction1();
 
 }
