@@ -9,6 +9,8 @@ import com.cf.sessiontest.service.IUserService;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
+
 
 /**
  * User服务接口实现类
@@ -20,6 +22,7 @@ public class UserServiceImpl extends BaseService<User> implements IUserService{
     @Autowired
     private UserMapper userMapper;
 
+    @PostConstruct
     public IUserService getProxy() {
         //从Spring上下文中获取AOP代理对象
         return ApplicationContextUtil.getApplicationContext().getBean(IUserService.class);
