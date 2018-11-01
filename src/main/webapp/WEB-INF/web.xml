@@ -72,6 +72,7 @@
         <url-pattern>*.jpg</url-pattern>
         <url-pattern>*.ttf</url-pattern>
         <url-pattern>*.txt</url-pattern>
+        <url-pattern>*.dtd</url-pattern>
     </servlet-mapping>
 
 </web-app>

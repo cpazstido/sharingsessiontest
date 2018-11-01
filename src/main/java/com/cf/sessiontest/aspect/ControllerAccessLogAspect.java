@@ -20,16 +20,16 @@ public class ControllerAccessLogAspect {
     public void controllerAspect() {
     }
 
-    @Around("controllerAspect()")
-    public Object around(ProceedingJoinPoint pjp) throws  Throwable{
-        Object args[] = pjp.getArgs();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        logger.debug("=================="+sdf.format(new Date())+" "+pjp.getTarget().getClass().getSimpleName()+" "+pjp.getSignature().getName()+"==================");
-        for(Object arg:args){
-            if(arg.getClass().getName().contains("com.cf"))
-                logger.debug("参数："+ JSON.toJSONString(arg));
-        }
-        Object re = pjp.proceed();
-        return re;
-    }
+//    @Around("controllerAspect()")
+//    public Object around(ProceedingJoinPoint pjp) throws  Throwable{
+//        Object args[] = pjp.getArgs();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+//        logger.debug("=================="+sdf.format(new Date())+" "+pjp.getTarget().getClass().getSimpleName()+" "+pjp.getSignature().getName()+"==================");
+//        for(Object arg:args){
+//            if(arg.getClass().getName().contains("com.cf"))
+//                logger.debug("参数："+ JSON.toJSONString(arg));
+//        }
+//        Object re = pjp.proceed();
+//        return re;
+//    }
 }

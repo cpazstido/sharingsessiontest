@@ -25,16 +25,17 @@ public class UserServiceImpl extends BaseService<User> implements IUserService{
     @PostConstruct
     public IUserService getProxy() {
         //从Spring上下文中获取AOP代理对象
-        return ApplicationContextUtil.getApplicationContext().getBean(IUserService.class);
+//        return ApplicationContextUtil.getApplicationContext().getBean(IUserService.class);
+        return null;
     }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
     public String testTransaction(){
-        for(int i=0;i<8;i++){
-            User user = getProxy().testTransaction1();
-            System.out.println(user);
-        }
+//        for(int i=0;i<8;i++){
+//            User user = getProxy().testTransaction1();
+//            System.out.println(user);
+//        }
         return "hello";
     };
 
