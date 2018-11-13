@@ -32,10 +32,10 @@ public class UserServiceImpl extends BaseService<User> implements IUserService{
     @Transactional(rollbackFor = Exception.class)
     @Override
     public String testTransaction(){
-//        for(int i=0;i<8;i++){
-//            User user = getProxy().testTransaction1();
-//            System.out.println(user);
-//        }
+        for(int i=0;i<8;i++){
+            User user = testTransaction1();
+            System.out.println(user);
+        }
         return "hello";
     };
 
