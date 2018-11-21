@@ -11,7 +11,7 @@ import java.util.Random;
 public class Client1 {
     public static void main(String[] args) throws IOException, InterruptedException {
         int i = 0;
-        while(i<50){
+        while(true){
             i++;
             int finalI = i;
             new Thread(new Runnable() {
@@ -53,8 +53,8 @@ public class Client1 {
             }).start();
 
             Random random = new Random();
-            int sleepTime = random.nextInt(2)*100;
-            System.out.println("休息："+sleepTime);
+            int sleepTime = random.nextInt(5)*100;
+//            System.out.println("休息："+sleepTime);
             Thread.sleep(sleepTime);
         }
 
