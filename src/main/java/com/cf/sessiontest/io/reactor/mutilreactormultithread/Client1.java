@@ -11,7 +11,7 @@ import java.util.Random;
 public class Client1 {
     public static void main(String[] args) throws IOException, InterruptedException {
         int i = 0;
-        while(true){
+        while(i<1){
             i++;
             int finalI = i;
             new Thread(new Runnable() {
