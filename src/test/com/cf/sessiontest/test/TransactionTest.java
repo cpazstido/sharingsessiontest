@@ -19,4 +19,13 @@ public class TransactionTest {
         User user = userService.queryUserById("6be8c36aaaf44926a1727a621e15d1c8");
         System.out.println("");
     }
+
+    @Test
+    public void update() throws Exception {
+        User user = new User();
+        user.setId("6be8c36aaaf44926a1727a621e15d1c8");
+        user.setName("cf");
+        int i = userService.updateUser(user);
+        System.out.println(i);
+    }
 }

@@ -12,6 +12,6 @@ public interface IUserService extends IService<User>{
 
     User queryUserById(String userId);
 
-    int updateUser(User user);
+    int updateUser(User user) throws Exception;
 
 }
