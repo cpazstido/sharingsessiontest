@@ -48,7 +48,7 @@ public class NioClient {
 
                     channel.configureBlocking(false);
                     //向服务器发送消息
-                    channel.write(ByteBuffer.wrap(new String("send message to server.").getBytes()));
+                    channel.write(ByteBuffer.wrap(new String("asd\nf21\n3a\nf5ew1f1a6wf16\na1fa65e1f6\naf15we1\n").getBytes()));
 
                     //连接成功后，注册接收服务器消息的事件
                     channel.register(selector, SelectionKey.OP_READ);
@@ -70,6 +70,6 @@ public class NioClient {
     }
 
     public static void main(String[] args) throws IOException {
-        new NioClient().init("127.0.0.1", 9981).listen();
+        new NioClient().init("127.0.0.1", 12345).listen();
     }
 }

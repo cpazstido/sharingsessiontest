@@ -1,4 +1,4 @@
-package com.cf.sessiontest.test;
+package cf.sessiontest.test;
 
 import com.alibaba.fastjson.JSONObject;
 import com.mysql.jdbc.TimeUtil;

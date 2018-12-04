@@ -10,4 +10,8 @@ public interface IUserService extends IService<User>{
     public String testTransaction();
     public User testTransaction1();
 
+    User queryUserById(String userId);
+
+    int updateUser(User user);
+
 }

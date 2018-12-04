@@ -32,10 +32,10 @@ public class UserServiceImpl extends BaseService<User> implements IUserService{
     @Transactional(rollbackFor = Exception.class)
     @Override
     public String testTransaction(){
-        for(int i=0;i<8;i++){
-            User user = testTransaction1();
-            System.out.println(user);
-        }
+//        for(int i=0;i<8;i++){
+//            User user = testTransaction1();
+//            System.out.println(user);
+//        }
         return "hello";
     };
 
@@ -44,6 +44,17 @@ public class UserServiceImpl extends BaseService<User> implements IUserService{
     public User testTransaction1() {
         User user = userMapper.selectByPrimaryKey("6be8c36aaaf44926a1727a621e15d1c8");
         return user;
+    }
+
+    @Override
+    public User queryUserById(String userId) {
+        return userMapper.selectByPrimaryKey(userId);
+    }
+
+    @Override
+    public int updateUser(User user) {
+
+        return 0;
     }
 }
 

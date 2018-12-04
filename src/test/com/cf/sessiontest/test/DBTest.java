@@ -1,4 +1,4 @@
-package com.cf.sessiontest.test;
+package cf.sessiontest.test;
 
 import com.cf.sessiontest.model.User;
 import com.cf.sessiontest.multidatasource.DataSourceTypeManager;
