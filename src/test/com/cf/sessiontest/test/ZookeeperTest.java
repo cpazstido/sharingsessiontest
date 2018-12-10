@@ -2,14 +2,22 @@ package cf.sessiontest.test;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.recipes.cache.ChildData;
+import org.apache.curator.framework.recipes.cache.PathChildrenCache;
+import org.apache.curator.framework.recipes.cache.PathChildrenCacheEvent;
+import org.apache.curator.framework.recipes.cache.PathChildrenCacheListener;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.data.Stat;
 import org.junit.Test;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 public class ZookeeperTest {
     private static String address = "10.10.1.231:2181";
+    private static String CHARSET = "utf-8";
 
     /**
      * 创建永久节点
@@ -115,6 +123,60 @@ public class ZookeeperTest {
             if(client!=null)
                 client.close();
         }
+    }
+
+    /**
+     * 节点监听
+     * @throws Exception
+     */
+    @Test
+    public void pathChildrenCache() throws Exception{
+        CuratorFramework client = CuratorFrameworkFactory.newClient(address, new ExponentialBackoffRetry(1000, 3));
+        try{
+            client.start();
+            String path = "/cf/pathChildren/change";
+
+            PathChildrenCache cache = new PathChildrenCache(client, path, true);
+            cache.start(PathChildrenCache.StartMode.POST_INITIALIZED_EVENT);
+            cache.getListenable().addListener(new PathChildrenCacheListener() {
+                public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
+                    switch (event.getType()) {
+                        case CHILD_ADDED:
+                            System.out.println("CHILD_ADDED," + event.getData().getPath());
+                            break;
+                        case CHILD_UPDATED:
+                            System.out.println("CHILD_UPDATED," + event.getData().getPath());
+                            break;
+                        case CHILD_REMOVED:
+                            System.out.println("CHILD_REMOVED," + event.getData().getPath());
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            });
+            client.create()
+                    .creatingParentContainersIfNeeded()
+                    .withMode(CreateMode.PERSISTENT)
+                    .withACL(ZooDefs.Ids.OPEN_ACL_UNSAFE)
+                    .forPath(path, "hello, zk".getBytes());
+            Thread.sleep(1000);
+            client.create().creatingParentContainersIfNeeded().withMode(CreateMode.PERSISTENT).forPath(path + "/c1");
+            Thread.sleep(1000);
+            client.delete().forPath(path + "/c1");
+            Thread.sleep(Integer.MAX_VALUE);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(client!=null)
+                client.close();
+        }
+    }
+
+    @Test
+    public void createLock(){
+
     }
 
     @Test
