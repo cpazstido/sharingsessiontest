@@ -1,5 +1,7 @@
 package com.cf.sessiontest.thread;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+
 /**
  * 两个线程交替打印数字
  * 这种方式会造成线程空转

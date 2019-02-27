@@ -29,7 +29,7 @@ public class JavaMethodAreaOOM {
             });
             OOM oom = (OOM) enhancer.create();
             oom.sayHello("Kevin LUAN");
-            System.out.println(i++);
+//            System.out.println(i++);
         }
     }
 
