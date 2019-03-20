@@ -32,6 +32,7 @@ public class Test {
 
 
         HashSet hashSet = new HashSet();
+
         LinkedHashSet linkedHashSet = new LinkedHashSet();
         TreeSet treeSet = new TreeSet();
         treeMap.put("","");

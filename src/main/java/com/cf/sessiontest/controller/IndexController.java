@@ -5,6 +5,7 @@ import com.cf.sessiontest.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
@@ -21,6 +22,11 @@ public class IndexController {
     @ResponseBody
     public String mvc(String mes){
         return "mvc:"+mes;
+    }
+
+    @RequestMapping("header")
+    public String headerTest(User user, String name, HttpServletRequest request, HttpServletResponse response){
+        return "";
     }
 
     @RequestMapping("index")
