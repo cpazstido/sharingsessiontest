@@ -14,4 +14,6 @@ public interface IUserService extends IService<User>{
 
     int updateUser(User user) throws Exception;
 
+    int updateUserAge(int age);
+
 }

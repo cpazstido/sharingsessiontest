@@ -4,4 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cf.sessiontest.dao.UserMapper">
 
+    <update id="updateUserAge" parameterType="java.lang.Integer">
+        update `user`
+        set age = age - ${age}
+        where 1=1
+        and id = 'f25660d8b89c4bf499cefb006f1782f1'
+        and age >= ${age}
+    </update>
 </mapper>

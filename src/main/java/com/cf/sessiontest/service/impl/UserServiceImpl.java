@@ -78,5 +78,11 @@ public class UserServiceImpl extends BaseService<User> implements IUserService {
         }
         return count;
     }
+
+    @Override
+    public int updateUserAge(int age) {
+        int re = userMapper.updateUserAge(3);
+        return re;
+    }
 }
 

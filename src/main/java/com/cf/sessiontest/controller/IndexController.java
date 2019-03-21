@@ -29,6 +29,13 @@ public class IndexController {
         return "";
     }
 
+    @RequestMapping("testTransaction")
+    @ResponseBody
+    public String testTransaction(){
+        int re = userService.updateUserAge(3);
+        return String.valueOf(re);
+    }
+
     @RequestMapping("index")
     @ResponseBody
     public String index(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
